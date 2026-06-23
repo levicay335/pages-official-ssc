@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球友直播 · 信息整理与资料索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f0f2f4;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            padding: 2rem 1.5rem;
+        }
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* hero 区域：开场短句 */
+        .hero {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+            padding: 2.8rem 2.5rem;
+            margin-bottom: 2.2rem;
+            border: 1px solid #e6e8ea;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #1e2a36;
+            margin-bottom: 0.6rem;
+        }
+        .hero .tagline {
+            font-size: 1.2rem;
+            color: #526a7a;
+            border-left: 4px solid #7b9cb0;
+            padding-left: 1.2rem;
+            margin-top: 0.4rem;
+        }
+
+        /* 承接段落卡片 */
+        .intro-card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            padding: 2rem 2.2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e2e6ea;
+        }
+        .intro-card p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #2f4253;
+        }
+        .intro-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 特点列表卡片 */
+        .features {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            padding: 2rem 2.2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e2e6ea;
+        }
+        .features h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2c38;
+            margin-bottom: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+        .features h2:after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #dde2e7;
+            margin-left: 1rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+        }
+        .feature-item {
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-start;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f2f5;
+        }
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+        .feature-icon {
+            font-size: 1.3rem;
+            min-width: 2rem;
+            line-height: 1.5;
+            color: #5f7c8f;
+        }
+        .feature-text {
+            flex: 1;
+        }
+        .feature-text strong {
+            display: block;
+            font-weight: 600;
+            color: #1e2d3a;
+            margin-bottom: 0.15rem;
+        }
+        .feature-text span {
+            font-size: 0.95rem;
+            color: #416074;
+        }
+
+        /* 场景/提示混合卡片（温和结尾风格） */
+        .closing-note {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            padding: 2rem 2.2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e2e6ea;
+        }
+        .closing-note h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #20313f;
+            margin-bottom: 1rem;
+        }
+        .closing-note p {
+            margin-bottom: 1rem;
+            color: #2f4253;
+        }
+        .closing-note .quiet-link {
+            background: #f4f7fa;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            border-left: 4px solid #7b9cb0;
+            margin-top: 0.5rem;
+            font-size: 0.98rem;
+        }
+        .closing-note a {
+            color: #2f5b72;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #b8ccd9;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .closing-note a:hover {
+            color: #153b4e;
+            border-bottom-color: #2f5b72;
+        }
+
+        /* 常见问题摘要 (FAQ) */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            padding: 1.8rem 2.2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e2e6ea;
+        }
+        .faq-summary h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #1f2c38;
+            margin-bottom: 1.2rem;
+        }
+        .faq-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px dashed #e6eaee;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .faq-q {
+            font-weight: 500;
+            color: #1b2a35;
+            margin-bottom: 0.2rem;
+        }
+        .faq-a {
+            font-size: 0.92rem;
+            color: #4d6678;
+        }
+
+        /* 底部轻量版权/致谢 */
+        .footer-note {
+            text-align: center;
+            color: #7b8f9d;
+            font-size: 0.85rem;
+            padding: 1.8rem 0 0.5rem;
+            border-top: 1px solid #dce1e6;
+            margin-top: 0.8rem;
+        }
+
+        /* 响应式微调 */
+        @media (min-width: 640px) {
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero {
+                padding: 3.2rem 3rem;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero .tagline {
+                font-size: 1rem;
+                padding-left: 0.8rem;
+            }
+            .intro-card,
+            .features,
+            .closing-note,
+            .faq-summary {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 开场短句 hero -->
+    <div class="hero">
+        <h1>索引 · 球友直播</h1>
+        <div class="tagline">从资料整理的角度，梳理信息源与观看路径。</div>
+    </div>
+
+    <!-- 承接段落：介绍与信息索引背景 -->
+    <div class="intro-card">
+        <p>在日常的信息收集中，直播类目的归档与检索始终是较为琐碎的环节。对于关注体育赛事、球类内容以及实时互动场景的用户而言，一个结构清晰、更新稳定的索引页面能减少反复查找的负担。</p>
+        <p>基于这一出发点，<a href="https://portal-qiuyou.com">球友直播</a> 被设计为一个聚合性的信息节点，侧重对直播来源、节目分类以及相关资源链接进行整理。页面本身不生产流，而是作为资料卡片式的目录，方便使用者按需跳转。</p>
+        <p>以下列出该索引目前覆盖的主要信息维度。</p>
+    </div>
+
+    <!-- 特点列表：四组核心条目 -->
+    <div class="features">
+        <h2>资料整理维度</h2>
+        <div class="feature-grid">
+
+            <div class="feature-item">
+                <div class="feature-icon">📌</div>
+                <div class="feature-text">
+                    <strong>直播频道目录</strong>
+                    <span>收录常用球类直播频道及备用入口，按赛事类型分组，支持快速定位。</span>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">📋</div>
+                <div class="feature-text">
+                    <strong>节目时间索引</strong>
+                    <span>以列表形式整理近期重点赛事与节目排期，辅助规划观看时间。</span>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🔗</div>
+                <div class="feature-text">
+                    <strong>外部资源归档</strong>
+                    <span>收集与球友直播相关的论坛、数据站及回放平台，并做简要来源标注。</span>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🧩</div>
+                <div class="feature-text">
+                    <strong>常见问题摘录</strong>
+                    <span>整理用户关于线路、延迟、兼容性等方面的典型疑问与基础说明。</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FAQ 摘要：收集两三个典型问答 -->
+    <div class="faq-summary">
+        <h4>FAQ 摘要 · 信息索引中反复出现的问题</h4>
+
+        <div class="faq-item">
+            <div class="faq-q">索引里列出的频道是否都长期有效？</div>
+            <div class="faq-a">大部分来源为公开稳定入口，但直播链接偶有变更。资料页面会不定期更新失效条目，建议同时关注页面上的更新记录。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">是否包含所有球类项目的直播？</div>
+            <div class="faq-a">目前以足球、篮球、网球等主流项目为主，其他类别在逐步补充。资料整理范围会随信息收集情况扩展。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">索引页面本身是否提供播放功能？</div>
+            <div class="faq-a">不提供。该页面仅作为信息索引与导航，所有直播观看均在跳转后的第三方平台进行。</div>
+        </div>
+    </div>
+
+    <!-- 温和结尾：场景提示 + 资料整理说明 -->
+    <div class="closing-note">
+        <h3>使用场景与整理说明</h3>
+        <p>如果你正在寻找一个能按类别浏览球类直播信息的汇集点，<a href="https://portal-qiuyou.com">球友直播</a> 的索引页或许能节省一些逐站搜索的时间。无论是赛前查阅节目列表，还是赛后寻找回放线索，目录式的结构都方便按图索骥。</p>
+        <p>资料本身保持克制——不夸大覆盖范围，不保证百分百实时，仅呈现经过核验的基础信息。未来会根据信息源的变化持续调整归档方式。</p>
+        <div class="quiet-link">
+            📖 提示：建议将索引页面加入书签，以便定期查阅更新后的频道列表及时间索引。
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        资料整理 · 球友直播信息索引
+    </div>
+
+</div>
+</body>
+</html>
